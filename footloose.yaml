@@ -22,4 +22,6 @@ machines:
     - containerPort: 30080
       hostPort: 30080
     privileged: true
-    volumes: []
+    volumes:
+    - destination: /var/lib/docker
+      type: volume
