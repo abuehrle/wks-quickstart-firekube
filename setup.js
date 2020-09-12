@@ -14,6 +14,7 @@ const backend = {
     privileged: true,
     volumes: [{
       type: 'volume',
+      source: 'firekube-node',
       destination: '/var/lib/docker',
     }]
   },
