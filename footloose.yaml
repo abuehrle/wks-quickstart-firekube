@@ -24,5 +24,4 @@ machines:
     privileged: true
     volumes:
     - destination: /var/lib/docker
-      source: firekube-node
       type: volume
