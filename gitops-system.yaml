@@ -1,5 +1,5 @@
 ---
-# GitOps Toolkit revision latest 2020-09-13T18:42:50+07:00
+# GitOps Toolkit revision latest 2020-09-18T22:05:28+07:00
 # Components: source-controller,kustomize-controller,helm-controller,notification-controller
 apiVersion: v1
 kind: Namespace
@@ -1051,27 +1051,25 @@ spec:
                   type: string
                 type: array
               healthChecks:
-                description: A list of workloads (Deployments, DaemonSets and StatefulSets) to be included in the health assessment.
+                description: A list of resources to be included in the health assessment.
                 items:
-                  description: WorkloadReference defines a reference to a Deployment, DaemonSet or StatefulSet.
+                  description: CrossNamespaceObjectReference contains enough information to let you locate the typed referenced object at cluster level
                   properties:
+                    apiVersion:
+                      description: API version of the referent, defaults to 'apps/v1'
+                      type: string
                     kind:
-                      description: Kind is the type of resource being referenced.
-                      enum:
-                      - Deployment
-                      - DaemonSet
-                      - StatefulSet
+                      description: Kind of the referent
                       type: string
                     name:
-                      description: Name is the name of resource being referenced.
+                      description: Name of the referent
                       type: string
                     namespace:
-                      description: Namespace is the namespace of resource being referenced.
+                      description: Namespace of the referent
                       type: string
                   required:
                   - kind
                   - name
-                  - namespace
                   type: object
                 type: array
               interval:
@@ -1112,7 +1110,7 @@ spec:
                     description: Name of the referent
                     type: string
                   namespace:
-                    description: Namespace of the referent
+                    description: Namespace of the referent, defaults to the Kustomization namespace
                     type: string
                 required:
                 - kind
@@ -1709,7 +1707,7 @@ spec:
           valueFrom:
             fieldRef:
               fieldPath: metadata.namespace
-        image: ghcr.io/fluxcd/kustomize-controller:v0.0.11
+        image: ghcr.io/fluxcd/kustomize-controller:v0.0.12
         imagePullPolicy: IfNotPresent
         livenessProbe:
           httpGet:
