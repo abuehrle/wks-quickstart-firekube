@@ -1,5 +1,5 @@
 ---
-# GitOps Toolkit revision latest 2020-09-18T22:19:39+07:00
+# GitOps Toolkit revision latest 2020-09-18T23:30:10+07:00
 # Components: source-controller,kustomize-controller,helm-controller,notification-controller
 apiVersion: v1
 kind: Namespace

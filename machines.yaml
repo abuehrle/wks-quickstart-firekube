@@ -21,7 +21,7 @@ metadata:
   namespace: weavek8sops
 spec:
   private:
-    address: 10.61.0.31
+    address: 10.61.0.32
     port: 22
   public:
     address: 127.0.0.1
